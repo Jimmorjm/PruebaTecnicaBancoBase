@@ -4,7 +4,7 @@ VOLUME /tmp
 
 EXPOSE 9000
 
-ARG JAR_FILE=target/pruebatecnica-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/BancoBasePruebaTecnica-JMR.jar
 
 ADD ${JAR_FILE} pruebaTecnicaJMR.jar
 

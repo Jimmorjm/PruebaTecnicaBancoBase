@@ -10,8 +10,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mx.bancobase</groupId>
-	<artifactId>pruebatecnica</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>BancoBasePruebaTecnica</artifactId>
+	<version>JMR</version>
 	<name>pruebatecnica</name>
 	<description>Prueba tecnica Banco Base</description>
 	<url />
@@ -77,11 +77,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-                    <image>
-                        <name>BancoBasePruebaTecnicaJMR</name>
-                    </image>
-                </configuration>
 			</plugin>
 		</plugins>
 	</build>
