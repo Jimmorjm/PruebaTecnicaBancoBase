@@ -1,0 +1,18 @@
+#Comando para crear la imagen del proyecto
+docker build -t prueba-tecnica-jmr .
+
+
+#RabbitQM image
+cd rabbit
+docker-compose up -d
+
+
+#MongoDB image
+cd MongoDB
+docker-compose up -d
+
+
+
+Nombre de la Queue: queue_pago
+Nombre del Exchange : message_exchange
+
