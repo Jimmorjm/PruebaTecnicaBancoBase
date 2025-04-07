@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mx.bancobase.pruebatecnica.config.PublisherPagos;
-import com.mx.bancobase.pruebatecnica.config.RabbitMQConfig;
 import com.mx.bancobase.pruebatecnica.model.EstatusPagoEnum;
 import com.mx.bancobase.pruebatecnica.model.Pago;
 import com.mx.bancobase.pruebatecnica.rabbitmq.model.PagoPublisher;
@@ -28,15 +27,20 @@ public class PagosServicesImpl implements PagosService {
 	private PagosRepositoryImpl pagosRepositoryImpl;
 
 	@Override
-	public void createPago(Pago pago) {
-		Pago nextPago = pagosRepositoryImpl.getLastPago();
-		String newFolio = generateFolio(nextPago.getIdPago());
-		pago.setIdPago(Long.valueOf(newFolio));
-		pago.setFolio(newFolio);
-		pago.setFechaCreacion(new Date());
-		pago.setFechaUltimaActualizacion(new Date());
-		pago.setEstausPago(EstatusPagoEnum.PAGO_PENDIENTE.getNombre());
-		pagosRepository.save(pago);
+	public String createPago(Pago pago) throws Exception {
+		try {
+			Pago nextPago = pagosRepositoryImpl.getLastPago();
+			String newFolio = generateFolio(nextPago.getIdPago());
+			pago.setIdPago(Long.valueOf(newFolio));
+			pago.setFolio(newFolio);
+			pago.setFechaCreacion(new Date());
+			pago.setFechaUltimaActualizacion(new Date());
+			pago.setEstausPago(EstatusPagoEnum.PAGO_PENDIENTE.getNombre());
+			pagosRepository.save(pago);
+			return "OK";
+		} catch (Exception e) {
+	        throw new Exception("Service Exception", e.getCause());
+		}
 	}
 
 	public String generateFolio(Long idFolio) {

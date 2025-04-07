@@ -6,7 +6,7 @@ import com.mx.bancobase.pruebatecnica.model.Pago;
 
 public interface PagosService {
 	
-	public void createPago(Pago pago);
+	public String createPago(Pago pago)  throws Exception;
 	
 	public Pago getPago(String folioPago);
 	

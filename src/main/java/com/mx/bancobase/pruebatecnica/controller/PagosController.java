@@ -45,7 +45,7 @@ public class PagosController {
 	@PostMapping(path = "/crearPago")
 	public ResponseEntity<String> crearPago(@RequestBody Pago pago) {
 		try {
-			pagosService.createPago(pago);
+			String message = pagosService.createPago(pago);
 			return new ResponseEntity<String>("OK", HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
